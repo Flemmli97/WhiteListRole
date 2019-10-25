@@ -49,8 +49,8 @@ public class CommandAddWhitelist implements ICommand {
 		} else {
 			if ("list".equals(args[0])) {
 				sender.sendMessage(new TextComponentTranslation("commands.whitelist.list",
-						new Object[] { server.getPlayerList().getWhitelistedPlayerNames().length,
-								server.getPlayerList().getAvailablePlayerDat().length }));
+					new Object[] { server.getPlayerList().getWhitelistedPlayerNames().length,
+						server.getPlayerList().getAvailablePlayerDat().length }));
 				String[] astring = server.getPlayerList().getWhitelistedPlayerNames();
 				sender.sendMessage(new TextComponentString(CommandBase.joinNiceString(astring)));
 			} else if ("add".equals(args[0])) {
@@ -66,7 +66,7 @@ public class CommandAddWhitelist implements ICommand {
 
 				server.getPlayerList().addWhitelistedPlayer(gameprofile);
 				CommandBase.notifyCommandListener(sender, this, "commands.whitelist.add.success",
-						new Object[] { args[1] });
+					new Object[] { args[1] });
 			} else if ("remove".equals(args[0])) {
 				if (args.length < 2) {
 					throw new WrongUsageException("commands.whitelist.remove.usage", new Object[0]);
@@ -80,7 +80,7 @@ public class CommandAddWhitelist implements ICommand {
 
 				server.getPlayerList().removePlayerFromWhitelist(gameprofile1);
 				CommandBase.notifyCommandListener(sender, this, "commands.whitelist.remove.success",
-						new Object[] { args[1] });
+					new Object[] { args[1] });
 			}
 		}
 	}
@@ -94,18 +94,18 @@ public class CommandAddWhitelist implements ICommand {
 
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
-			@Nullable BlockPos targetPos) {
+		@Nullable BlockPos targetPos) {
 		if (args.length == 1) {
 			return CommandBase.getListOfStringsMatchingLastWord(args, new String[] { "add", "remove", "list" });
 		} else {
 			if (args.length == 2) {
 				if ("remove".equals(args[0])) {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
-							server.getPlayerList().getWhitelistedPlayerNames());
+						server.getPlayerList().getWhitelistedPlayerNames());
 				}
 				if ("add".equals(args[0])) {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
-							server.getPlayerProfileCache().getUsernames());
+						server.getPlayerProfileCache().getUsernames());
 				}
 			}
 			return Collections.<String>emptyList();

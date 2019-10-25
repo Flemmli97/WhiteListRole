@@ -45,19 +45,19 @@ public class CommandAddWhitelistRole implements ICommand {
 			if (args[0].equals("list")) {
 				Set<String> astring = WhiteListData.get(server.getEntityWorld()).players(server);
 				sender.sendMessage(
-						new TextComponentString("People with whitelist permission: (" + astring.size() + "):"));
+					new TextComponentString("People with whitelist permission: (" + astring.size() + "):"));
 				sender.sendMessage(new TextComponentString(joinNiceString(astring)));
 			} else if (args[0].equals("remove")) {
 				if (WhiteListData.get(server.getEntityWorld()).removePlayer(server, args[1]))
 					CommandBase.notifyCommandListener(sender, this, "Removed whitelist permission for %s",
-							new Object[] { args[1] });
+						new Object[] { args[1] });
 				else {
 					throw new CommandException("Couldnt remove permission for %s", new Object[] { args[1] });
 				}
 			} else if (args[0].equals("add")) {
 				if (WhiteListData.get(server.getEntityWorld()).addPlayer(server, args[1]))
 					CommandBase.notifyCommandListener(sender, this, "Added whitelist permission for %s",
-							new Object[] { args[1] });
+						new Object[] { args[1] });
 				else {
 					throw new CommandException("Couldnt add permission for $s", new Object[] { args[1] });
 				}
@@ -89,19 +89,19 @@ public class CommandAddWhitelistRole implements ICommand {
 
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
-			BlockPos targetPos) {
+		BlockPos targetPos) {
 		if (args.length == 1) {
 			return CommandBase.getListOfStringsMatchingLastWord(args, new String[] { "add", "remove", "list" });
 		} else {
 			if (args.length == 2) {
 				if ("remove".equals(args[0])) {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
-							server.getPlayerList().getWhitelistedPlayerNames());
+						server.getPlayerList().getWhitelistedPlayerNames());
 				}
 
 				if ("add".equals(args[0])) {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
-							server.getPlayerProfileCache().getUsernames());
+						server.getPlayerProfileCache().getUsernames());
 				}
 			}
 			return Collections.<String>emptyList();
