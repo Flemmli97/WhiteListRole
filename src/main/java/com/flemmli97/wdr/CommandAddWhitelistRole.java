@@ -67,7 +67,6 @@ public class CommandAddWhitelistRole implements ICommand {
 
 	private static String joinNiceString(Set<String> elements) {
 		StringBuilder stringbuilder = new StringBuilder();
-
 		int i = 0;
 		for (String s : elements) {
 			if (i > 0) {
@@ -77,7 +76,6 @@ public class CommandAddWhitelistRole implements ICommand {
 					stringbuilder.append(", ");
 				}
 			}
-
 			stringbuilder.append(s);
 			i++;
 		}
@@ -106,7 +104,6 @@ public class CommandAddWhitelistRole implements ICommand {
 							server.getPlayerProfileCache().getUsernames());
 				}
 			}
-
 			return Collections.<String>emptyList();
 		}
 	}

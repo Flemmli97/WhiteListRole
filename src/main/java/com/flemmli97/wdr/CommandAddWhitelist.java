@@ -103,13 +103,11 @@ public class CommandAddWhitelist implements ICommand {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
 							server.getPlayerList().getWhitelistedPlayerNames());
 				}
-
 				if ("add".equals(args[0])) {
 					return CommandBase.getListOfStringsMatchingLastWord(args,
 							server.getPlayerProfileCache().getUsernames());
 				}
 			}
-
 			return Collections.<String>emptyList();
 		}
 	}
