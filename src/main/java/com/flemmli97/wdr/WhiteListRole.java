@@ -12,19 +12,19 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 @Mod.EventBusSubscriber
 public class WhiteListRole {
 
-	public static final String MODID = "wrl";
-	public static final String MODNAME = "Whitelist Role";
-	public static final String VERSION = "1.0.0";
-	public static final Logger logger = LogManager.getLogger(WhiteListRole.MODID);
+    public static final String MODID = "wrl";
+    public static final String MODNAME = "Whitelist Role";
+    public static final String VERSION = "1.0.0";
+    public static final Logger logger = LogManager.getLogger(WhiteListRole.MODID);
 
-	@Instance
-	public static WhiteListRole instance = new WhiteListRole();
+    @Instance
+    public static WhiteListRole instance = new WhiteListRole();
 
-	@EventHandler
-	public void serverStart(FMLServerStartingEvent event) {
-		if (event.getServer().isDedicatedServer()) {
-			event.registerServerCommand(new CommandAddWhitelistRole());
-			event.registerServerCommand(new CommandAddWhitelist());
-		}
-	}
+    @EventHandler
+    public void serverStart(FMLServerStartingEvent event) {
+        if (event.getServer().isDedicatedServer()) {
+            event.registerServerCommand(new CommandAddWhitelistRole());
+            event.registerServerCommand(new CommandAddWhitelist());
+        }
+    }
 }
